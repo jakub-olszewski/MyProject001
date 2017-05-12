@@ -12,6 +12,22 @@ public class ISortAlgorithmTest {
     int[] sortedTableAsc = { 1, 2, 4, 5, 87 };
     int[] sortedTableDesc = { 87, 5, 4, 2, 1 };
 
+    @Test
+    public void shouldTestIsTableEqual() {
+	int[] table1 = { 87, 5, 4, 2, 1 };
+	int[] table2 = { 87, 5, 4, 2, 1 };
+
+	assertTrue(isTableEqual(table1, table2));
+    }
+
+    @Test
+    public void shouldTestIsTableNotEqual() {
+	int[] table1 = { 87, 5, 4, 2, 1 };
+	int[] table2 = { 9, 5, 4, 2, 1 };
+
+	assertFalse(isTableEqual(table1, table2));
+    }
+
     /**
      * Test sprawdzajacy czy tablica jest domyslnie posortowana rosnaco
      */
