@@ -1,5 +1,7 @@
 package pl.sdacademy.sort;
 
+import pl.sdacademy.utils.TableUtils;
+
 public class SortAlgorithm implements ISortAlgorithm {
 
     public SortAlgorithm() {
@@ -22,28 +24,38 @@ public class SortAlgorithm implements ISortAlgorithm {
      */
     @Override
     public void sort(int[] array, boolean ascending) {
+	if (array == null) {
+	    throw new NullPointerException();
+	}
+	TableUtils tableUtils = new TableUtils();
 
-	// TODO Zaimplementuj ponizszy pseudokod
-	// procedure BubbleSort( var a: array of TItemBubbleSort );
-	// var
-	// n, newn, i:integer;
-	// begin
-	// n := high( a );
-	// repeat
-	// newn := 0;
-	// for i := 1 to n do
-	// begin
-	// if a[ i - 1 ] > a[ i ] then
-	// begin
-	// swap( a[ i - 1 ], a[ i ]);
-	// newn := i ;
-	// end;
-	// end ;
-	// n := newn;
-	// until n = 0;
-	// end;
-	//
-	// end.
+	if (ascending) {
+	    int temp;
+	    for (int i = 0; i < array.length - 1; i++) {
+
+		for (int j = 1; j < array.length - i; j++) {
+		    if (array[j - 1] > array[j]) {
+			temp = array[j - 1];
+			array[j - 1] = array[j];
+			array[j] = temp;
+		    }
+		}
+		tableUtils.print(array);
+	    }
+	} else {
+	    int temp;
+	    for (int i = 0; i < array.length - 1; i++) {
+
+		for (int j = 1; j < array.length - i; j++) {
+		    if (array[j - 1] < array[j]) {
+			temp = array[j - 1];
+			array[j - 1] = array[j];
+			array[j] = temp;
+		    }
+		}
+		tableUtils.print(array);
+	    }
+	}
 
     }
 

@@ -17,7 +17,7 @@ public class ISortAlgorithmTest {
 	int[] table1 = { 87, 5, 4, 2, 1 };
 	int[] table2 = { 87, 5, 4, 2, 1 };
 
-	assertTrue(isTableEqual(table1, table2));
+	assertTrue("Tables are not equal", isTableEqual(table1, table2));
     }
 
     @Test
@@ -25,7 +25,7 @@ public class ISortAlgorithmTest {
 	int[] table1 = { 87, 5, 4, 2, 1 };
 	int[] table2 = { 9, 5, 4, 2, 1 };
 
-	assertFalse(isTableEqual(table1, table2));
+	assertFalse("Its should be not equals tables", isTableEqual(table1, table2));
     }
 
     /**
@@ -51,17 +51,15 @@ public class ISortAlgorithmTest {
      * @return
      */
     private boolean isTableEqual(int[] tableToSort, int[] sortedTable) {
-	boolean isAllElementEqualOrEndofTable = true;
-	int i = 0;
-	while (isAllElementEqualOrEndofTable) {
-	    isAllElementEqualOrEndofTable = tableToSort[i] == sortedTable[i] || !isEndOfTable(tableToSort, i);
-	    i++;
-	}
-	return isAllElementEqualOrEndofTable;
-    }
+	boolean isEqual = true;
 
-    private boolean isEndOfTable(int[] tableToSort, int i) {
-	return i == tableToSort.length;
+	for (int i = 0; i < tableToSort.length; i++) {
+	    if (tableToSort[i] != sortedTable[i]) {
+		return false;
+	    }
+	}
+
+	return isEqual;
     }
 
     /**
@@ -107,9 +105,8 @@ public class ISortAlgorithmTest {
 	// when
 	try {
 	    sortAlgorithm.sort(notInitializedArray);
-	} catch (Exception e) {
+	} catch (NullPointerException e) {
 	    isArrayNull = true;
-	    e.printStackTrace();
 	}
 	// then
 	assertTrue(isArrayNull);
