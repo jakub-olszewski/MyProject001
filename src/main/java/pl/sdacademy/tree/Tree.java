@@ -24,6 +24,7 @@ public class Tree {
      */
     private Node insert(Node node, int value) {
 	if (node == null) {
+	    // zainicjowalismy roota
 	    node = new Node(value);
 	} else {
 	    if (node.getRight() == null) {
@@ -32,6 +33,7 @@ public class Tree {
 		node.setLeft(insert(node.getLeft(), value));
 	    }
 	}
+	// zwrocilismy roota
 	return node;
     }
 

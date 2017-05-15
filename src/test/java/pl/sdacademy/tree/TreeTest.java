@@ -14,9 +14,14 @@ public class TreeTest {
 	tree.insert(4);
 	tree.insert(1);
 	tree.insert(5);
-
-	tree.print();
-
+	System.out.println("=================================");
+	BinaryTree btree = new BinaryTree();
+	btree.add(3);// mamy przypisana 3 i to jest korzen/root
+	btree.add(2);
+	btree.add(9);
+	btree.add(4);
+	btree.add(1);
+	btree.add(5);
     }
 
 }
