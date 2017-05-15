@@ -4,18 +4,32 @@ public class Tree {
 
     Node root;
 
-    public void insert(int data) {
-	root = insert(root, data);
+    /**
+     * Dodanie elementu do drzewa
+     * 
+     * @param value
+     */
+    public void insert(int value) {
+	root = insert(root, value);
+	System.out.println("");
+	print();
     }
 
-    Node insert(Node node, int data) {
+    /**
+     * Dodawanie wartosci do drzewa
+     * 
+     * @param node
+     * @param value
+     * @return
+     */
+    private Node insert(Node node, int value) {
 	if (node == null) {
-	    node = new Node(data);
+	    node = new Node(value);
 	} else {
 	    if (node.getRight() == null) {
-		node.setRight(insert(node.getRight(), data));
+		node.setRight(insert(node.getRight(), value));
 	    } else {
-		node.setLeft(insert(node.getLeft(), data));
+		node.setLeft(insert(node.getLeft(), value));
 	    }
 	}
 	return node;

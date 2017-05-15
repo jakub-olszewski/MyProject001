@@ -8,7 +8,7 @@ public class TreeTest {
     public void test() {
 
 	Tree tree = new Tree();
-	tree.insert(3);
+	tree.insert(3);// mamy przypisana 3 i to jest korzen/root
 	tree.insert(2);
 	tree.insert(9);
 	tree.insert(4);
