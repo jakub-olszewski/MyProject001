@@ -11,35 +11,45 @@ import pl.sdacademy.utils.TableUtils;
 public class ISearchAlgoritmTest {
 
     int[] randomArray;
-    ISearchAlgorithm search;
+    int[] sortedArray;
+    ISearchAlgorithm searchAlgorithm;
     TableUtils tableUtils;
 
     @Before
     public void setUp() {
 	randomArray = new int[] { 23, 1, 53, 7, 98, 3, 2 };
+	sortedArray = new int[] { 1, 23, 55, 66, 77, 88, 9012 };
+
 	tableUtils = new TableUtils();
-	search = new NaiveSearchAlgorithm();
+	searchAlgorithm = new NaiveSearchAlgorithm();
+    }
+
+    private boolean shouldFindElementInArray(int elementToFind, int expectedElement, int[] array) {
+	// given
+
+	// when
+	int receicedResult = searchAlgorithm.search(randomArray, elementToFind);
+
+	// then
+	boolean result = (receicedResult == expectedElement);
+
+	return result;
     }
 
     @Test
     public void shouldFindElementInARandomArray() {
-	// given
-	int valueToFind = 7;
-	int expectedResult = 3;
+	int element = 7;
+	int elementExpected = 3;
+	boolean result = shouldFindElementInArray(element, elementExpected, randomArray);
+	assertTrue("Can't find element = " + element + " in values: " + tableUtils.print(randomArray), result);
 
-	// when
-	int receicedResult = search.search(randomArray, valueToFind);
-
-	// then
-	boolean result = (receicedResult == expectedResult);
-
-	assertTrue("Can't find element = " + valueToFind + " in values: " + tableUtils.print(randomArray), result);
     }
 
     @Test
     public void shouldFindElementInSortedArray() {
 
-	assertTrue(false);
+	boolean result = shouldFindElementInArray(23, 1, sortedArray);
+	assertTrue("Can't find element = " + 23 + " in values: " + tableUtils.print(sortedArray), result);
     }
 
     @Test
