@@ -10,15 +10,21 @@ import pl.sdacademy.utils.TableUtils;
 
 public class ISearchAlgoritmTest {
 
+    int invalidIndex;
     int[] randomArray;
     int[] sortedArray;
+    int[] emptyArray;
     ISearchAlgorithm searchAlgorithm;
     TableUtils tableUtils;
 
     @Before
     public void setUp() {
+
+	invalidIndex = -1;
+
 	randomArray = new int[] { 23, 1, 53, 7, 98, 3, 2 };
 	sortedArray = new int[] { 1, 23, 55, 66, 77, 88, 9012 };
+	emptyArray = new int[0];
 
 	tableUtils = new TableUtils();
 	searchAlgorithm = new NaiveSearchAlgorithm();
@@ -54,19 +60,30 @@ public class ISearchAlgoritmTest {
 
     @Test
     public void shouldReturnInvalidIndexIfElementNotPresent() {
-
-	assertTrue(false);
+	int searchResult = searchAlgorithm.search(randomArray, 31);
+	assertTrue("Invalid index doesn't exist", searchResult < 0);
     }
 
     @Test
     public void shouldReturnInvalidIndexIfArrayLenghtIsZero() {
 
-	assertTrue(false);
+	int receivedResult = searchAlgorithm.search(emptyArray, 2);
+
+	assertTrue("Array is empty", receivedResult < 0);
     }
 
     @Test
     public void shouldThrowIfArrayIsNull() {
+	boolean hasThrow = false;
+	int[] array = null;
+	int value = 4;
+	try {
+	    searchAlgorithm.search(array, value);
+	} catch (Exception e) {
 
-	assertTrue(false);
+	    hasThrow = true;
+	}
+
+	assertTrue("It doesn't throw exeption", hasThrow);
     }
 }
