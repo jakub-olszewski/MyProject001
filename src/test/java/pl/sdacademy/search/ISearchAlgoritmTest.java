@@ -1,4 +1,4 @@
-package pl.sdacademy.search.sandbox;
+package pl.sdacademy.search;
 
 import static org.junit.Assert.assertTrue;
 
@@ -27,14 +27,20 @@ public class ISearchAlgoritmTest {
 	emptyArray = new int[0];
 
 	tableUtils = new TableUtils();
-	searchAlgorithm = new NaiveSearchAlgorithm();
+	searchAlgorithm = new pl.sdacademy.search.NaiveSearchAlgorithm();
     }
 
     private boolean shouldFindElementInArray(int elementToFind, int expectedElement, int[] array) {
 	// given
 
 	// when
-	int receicedResult = searchAlgorithm.search(randomArray, elementToFind);
+	int receicedResult = -1;
+	try {
+	    receicedResult = searchAlgorithm.search(array, elementToFind);
+	} catch (Exception e) {
+	    // TODO Auto-generated catch block
+	    e.printStackTrace();
+	}
 
 	// then
 	boolean result = (receicedResult == expectedElement);
@@ -60,14 +66,26 @@ public class ISearchAlgoritmTest {
 
     @Test
     public void shouldReturnInvalidIndexIfElementNotPresent() {
-	int searchResult = searchAlgorithm.search(randomArray, 31);
+	int searchResult = 0;
+	try {
+	    searchResult = searchAlgorithm.search(randomArray, 31);
+	} catch (Exception e) {
+	    // TODO Auto-generated catch block
+	    e.printStackTrace();
+	}
 	assertTrue("Invalid index doesn't exist", searchResult < 0);
     }
 
     @Test
     public void shouldReturnInvalidIndexIfArrayLenghtIsZero() {
 
-	int receivedResult = searchAlgorithm.search(emptyArray, 2);
+	int receivedResult = 0;
+	try {
+	    receivedResult = searchAlgorithm.search(emptyArray, 2);
+	} catch (Exception e) {
+	    // TODO Auto-generated catch block
+	    e.printStackTrace();
+	}
 
 	assertTrue("Array is empty", receivedResult < 0);
     }
