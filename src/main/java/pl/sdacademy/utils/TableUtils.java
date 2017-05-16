@@ -38,17 +38,12 @@ public class TableUtils implements ITableUtils {
 	System.out.println("");
     }
 
-    public void print(int[] table) {
-	int start = 0;
-	int end = table.length;
+    public String print(int[] table) {
+	String result = "";
 	for (Object element : table) { //
-	    System.out.print(element);
-	    start++;
-	    if (start != end) {
-		System.out.print(",");
-	    }
+	    result += element + " ";
 	}
-	System.out.println("");
+	return result;
     }
 
     /**
