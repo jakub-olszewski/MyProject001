@@ -6,6 +6,7 @@ public class MainWithoutLambda {
 	ISumInt object = new SumInt();
 	int sum = object.sum(5);
 	System.out.println("sum=" + sum);
+
     }
 
 }
