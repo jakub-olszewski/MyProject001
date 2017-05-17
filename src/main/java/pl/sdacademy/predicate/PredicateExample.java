@@ -25,11 +25,25 @@ public class PredicateExample {
 
 	checkPredicate(p -> p == 99, number);
 
-	IGenericSearchAlgorithm<Integer> searchAlgorithm = null;
+	IGenericSearchAlgorithm<Integer> searchAlgorithm = new IGenericSearchAlgorithm<Integer>() {
+
+	    @Override
+	    public <Integer extends Comparable> int search(Integer[] array, Predicate<Integer> predicate) {
+
+		boolean condition = predicate.test(array[1]);
+		if (condition) {
+		    System.out.println("condition = true");
+		} else {
+		    System.out.println("condition = false");
+		}
+		return 100;
+	    }
+	};
 	Integer[] table = new Integer[] { 1, 2, 3, 4 };
 
 	int position = searchAlgorithm.search(table, n -> n == 2);
 
+	System.out.println("position=" + position);
     }
 
     private static void checkPredicate(Predicate<Integer> condition, int number) {
