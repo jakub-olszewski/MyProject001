@@ -2,7 +2,7 @@ package pl.sdacademy.predicate;
 
 import java.util.function.Predicate;
 
-import pl.sdacademy.search.IGenericSearchAlgorithm;
+import pl.sdacademy.search.generic.IGenericSearchAlgorithm;
 
 public class PredicateExample {
 

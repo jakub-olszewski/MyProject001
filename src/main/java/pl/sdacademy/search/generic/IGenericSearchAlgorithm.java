@@ -1,4 +1,4 @@
-package pl.sdacademy.search;
+package pl.sdacademy.search.generic;
 
 import java.util.function.Predicate;
 

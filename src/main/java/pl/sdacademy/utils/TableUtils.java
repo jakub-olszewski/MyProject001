@@ -46,6 +46,14 @@ public class TableUtils implements ITableUtils {
 	return result;
     }
 
+    public String print(Integer[] table) {
+	String result = "";
+	for (Object element : table) { //
+	    result += element + " ";
+	}
+	return result;
+    }
+
     /**
      * Tworzy tablice od 1 do n
      * 
