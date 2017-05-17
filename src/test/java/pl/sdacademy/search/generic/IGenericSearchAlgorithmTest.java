@@ -27,7 +27,7 @@ public class IGenericSearchAlgorithmTest {
 	emptyArray = new Integer[0];
 
 	tableUtils = new TableUtils();
-	searchAlgorithm = null;
+	searchAlgorithm = new NaiveGenericSearchAlgorithm<>();
     }
 
     private boolean shouldFindElementInArray(int elementToFind, int expectedElement, Integer[] array) {
@@ -69,7 +69,7 @@ public class IGenericSearchAlgorithmTest {
     public void shouldReturnInvalidIndexIfElementNotPresent() {
 	int searchResult = 0;
 	try {
-	    searchResult = searchAlgorithm.search(randomArray, 31);
+	    searchResult = searchAlgorithm.search(randomArray, p -> p == 31);
 	} catch (Exception e) {
 	    // TODO Auto-generated catch block
 	    e.printStackTrace();
@@ -82,7 +82,7 @@ public class IGenericSearchAlgorithmTest {
 
 	int receivedResult = 0;
 	try {
-	    receivedResult = searchAlgorithm.search(emptyArray, 2);
+	    receivedResult = searchAlgorithm.search(emptyArray, p -> p == 2);
 	} catch (Exception e) {
 	    // TODO Auto-generated catch block
 	    e.printStackTrace();
@@ -94,10 +94,10 @@ public class IGenericSearchAlgorithmTest {
     @Test
     public void shouldThrowIfArrayIsNull() {
 	boolean hasThrow = false;
-	int[] array = null;
+	Integer[] array = null;
 	int value = 4;
 	try {
-	    searchAlgorithm.search(array, value);
+	    searchAlgorithm.search(array, p -> p == value);
 	} catch (Exception e) {
 
 	    hasThrow = true;
