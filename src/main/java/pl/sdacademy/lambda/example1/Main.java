@@ -33,6 +33,7 @@ public class Main {
 	    }
 	};
 	Bulka kajzerkaBulka = new Bulka("Kajzerka");
+
 	Maslo ekstraMaslo = new Maslo("Ekstra");
 	Warzywo pomidorWarzywo = new Warzywo("Pomidor");
 
@@ -55,10 +56,11 @@ public class Main {
 	System.out.println("Kanapka zrobiona przez Panią Jadzie :" + wiosennaKanapka2);
 
 	Predicate<Jedzenie> posiadaMasloExtra = (elementKanapki) -> {
-	    return elementKanapki.getNazwa().equalsIgnoreCase("ekstra");
+	    return elementKanapki.getNazwa().equalsIgnoreCase("ekstra")
+		    || elementKanapki.getSkladniki().contains("Ekstra");
 	};
 
-	Jedzenie[] jedzenie = new Jedzenie[] { kajzerkaBulka, ekstraMaslo, wiosennaKanapka, pomidorWarzywo };
+	Jedzenie[] jedzenie = new Jedzenie[] { kajzerkaBulka, wiosennaKanapka, pomidorWarzywo };
 	for (int i = 0; i < jedzenie.length; i++) {
 	    System.out.print(jedzenie[i]);
 	    if (posiadaMasloExtra.test(jedzenie[i])) {

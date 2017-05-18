@@ -7,7 +7,8 @@ public class Jedzenie {
 
     public Jedzenie(String nazwa) {
 	super();
-	this.nazwa = nazwa;
+	setNazwa(nazwa);
+	setSkladniki("");
     }
 
     public String getNazwa() {
