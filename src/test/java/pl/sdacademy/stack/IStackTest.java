@@ -11,6 +11,8 @@ public class IStackTest {
 
     int maxElement;
     IStack<Laptop> stosLaptopow;
+    IStack<Laptop> pelenStos;
+    boolean result;
 
     /**
      * Uruchamia się przed każdym testem
@@ -18,6 +20,7 @@ public class IStackTest {
     @Before
     public void setUp() {
 	maxElement = 3;
+	result = false;
     }
 
     /**
@@ -27,7 +30,6 @@ public class IStackTest {
     public void shouldPushElementToEmptyStack() {
 	// given
 	Laptop laptopJana = new Laptop("Jan");
-	boolean result = false;
 	// when
 	if (stosLaptopow.isEmpty()) {
 	    stosLaptopow.push(laptopJana);
@@ -41,7 +43,25 @@ public class IStackTest {
 
     @Test
     public void shouldNotPushElementToFillStack() {
+	Laptop laptopAni = new Laptop("Anna");
+	pelenStos.push(laptopAni);
 
+	if (!laptopAni.equals(pelenStos.peek())) {
+	    result = true;
+	}
+	assertTrue(result);
+
+    }
+
+    @Test
+    public void shouldDeleteValueAfterPoping() {
+	Laptop pierwszyLaptop = stosLaptopow.peek();
+	stosLaptopow.pop();
+	Laptop kolejnyLaptop = stosLaptopow.peek();
+	if (pierwszyLaptop.equals(kolejnyLaptop)) {
+	    result = false;
+	}
+	assertTrue(result);
     }
 
 }
