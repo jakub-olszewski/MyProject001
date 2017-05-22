@@ -1,5 +1,6 @@
 package pl.sdacademy.stack;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
@@ -13,6 +14,7 @@ public class IStackTest {
     IStack<Laptop> stosLaptopow;
     IStack<Laptop> pelenStos;
     boolean result;
+    IStack<Laptop> pustyStos;
 
     /**
      * Uruchamia się przed każdym testem
@@ -64,4 +66,46 @@ public class IStackTest {
 	assertTrue(result);
     }
 
+    @Test
+    public void shouldReceiveValueWhenPeekingButNoDeleteIt() {
+	// given
+	Laptop pierwszeSpojrzenie = stosLaptopow.peek();
+
+	// when
+	Laptop drugieSpojrzenie = stosLaptopow.peek();
+
+	// then
+	if (pierwszeSpojrzenie.equals(drugieSpojrzenie)) {
+	    result = true;
+	}
+	assertTrue(result);
+    }
+
+    @Test
+    public void shouldReturnZeroAsSizeOfEmptyStack() {
+	assertTrue(pustyStos.size() == 0);
+    }
+
+    @Test
+    public void shouldReturnCorrectSizeForFilledStack() {
+	assertTrue(pelenStos.size() == maxElement);
+    }
+
+    @Test
+    public void shouldReturnTrueIfThereWereNoValuesPutOnStack() {
+	assertTrue(pustyStos.isEmpty());
+    }
+
+    @Test
+    public void shouldReturnFalseIfPushWasCallPreviously() {
+	pustyStos.push(new Laptop("Madzia"));
+	assertFalse(pustyStos.isEmpty());
+    }
+
+    @Test
+    public void shouldReturnTrueIfElementWasPushedAndPoped() {
+	pustyStos.push(new Laptop("Jula"));
+	pustyStos.pop();
+	assertTrue(pustyStos.isEmpty());
+    }
 }
