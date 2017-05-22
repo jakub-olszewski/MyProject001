@@ -7,6 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import pl.sdacademy.model.Laptop;
+import pl.sdacademy.stack.sandbox.Stack;
 
 public class IStackTest {
 
@@ -23,6 +24,14 @@ public class IStackTest {
     public void setUp() {
 	maxElement = 3;
 	result = false;
+	stosLaptopow = new Stack(maxElement, Laptop.class);
+	Laptop nowyLaptop = new Laptop("Ania");
+	stosLaptopow.push(nowyLaptop);
+	pelenStos = new Stack(maxElement, Laptop.class);
+	pelenStos.push(new Laptop("Jerzy"));
+	pelenStos.push(new Laptop("Brajan"));
+	pelenStos.push(new Laptop("Dzesika"));
+	pustyStos = new Stack(maxElement, Laptop.class);
     }
 
     /**
@@ -33,9 +42,9 @@ public class IStackTest {
 	// given
 	Laptop laptopJana = new Laptop("Jan");
 	// when
-	if (stosLaptopow.isEmpty()) {
-	    stosLaptopow.push(laptopJana);
-	    Laptop laptopPierwszyZGory = stosLaptopow.peek();
+	if (pustyStos.isEmpty()) {
+	    pustyStos.push(laptopJana);
+	    Laptop laptopPierwszyZGory = pustyStos.peek();
 	    result = laptopJana.equals(laptopPierwszyZGory);
 	}
 

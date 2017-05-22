@@ -1,37 +1,51 @@
 package pl.sdacademy.stack.sandbox;
 
+import java.lang.reflect.Array;
+
 import pl.sdacademy.stack.IStack;
 
 public class Stack<T> implements IStack<T> {
 
+    private int maksymalnyRozmiarStosu;
+    private T[] tablicaStosu;
+    private int wierzcholek;
+
+    public Stack(int rozmiarStosu, Class<T> klasaElementowStosu) {
+	maksymalnyRozmiarStosu = rozmiarStosu;
+	// stworzenie tablicy elementow danej klasy
+	tablicaStosu = (T[]) Array.newInstance(klasaElementowStosu, rozmiarStosu);
+	wierzcholek = -1;
+    }
+
     @Override
     public void push(T element) {
-	// TODO Auto-generated method stub
-
+	if (wierzcholek < maksymalnyRozmiarStosu - 1) {
+	    wierzcholek++;
+	    tablicaStosu[wierzcholek] = element;
+	}
     }
 
     @Override
     public T pop() {
-	// TODO Auto-generated method stub
-	return null;
+	T pierwszyElement = tablicaStosu[wierzcholek];
+	tablicaStosu[wierzcholek] = null;
+	wierzcholek--;
+	return pierwszyElement;
     }
 
     @Override
     public T peek() {
-	// TODO Auto-generated method stub
-	return null;
+	return tablicaStosu[wierzcholek];
     }
 
     @Override
     public int size() {
-	// TODO Auto-generated method stub
-	return 0;
+	return wierzcholek + 1;
     }
 
     @Override
     public boolean isEmpty() {
-	// TODO Auto-generated method stub
-	return false;
+	return wierzcholek == -1;
     }
 
 }
