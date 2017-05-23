@@ -71,6 +71,8 @@ public class IStackTest {
 	Laptop kolejnyLaptop = stosLaptopow.peek();
 	if (pierwszyLaptop.equals(kolejnyLaptop)) {
 	    result = false;
+	}else{
+		result = true;
 	}
 	assertTrue(result);
     }
