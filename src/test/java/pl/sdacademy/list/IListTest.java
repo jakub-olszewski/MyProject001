@@ -5,6 +5,7 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
+import pl.sdacademy.list.sandbox.List;
 import pl.sdacademy.model.Laptop;
 
 public class IListTest {
@@ -16,10 +17,11 @@ public class IListTest {
 
 	@Before
 	public void setUp() {
-		pustaListaLaptopow = null;
+		pustaListaLaptopow = new List<>();
 		result = false;
 		laptopMarka = new Laptop("Marka");
 		laptopAdama = new Laptop("Adama");
+		niePustaListaLaptopow = new List<>();
 		niePustaListaLaptopow.add(laptopMarka);
 		niePustaListaLaptopow.add(laptopAdama);
 	}
