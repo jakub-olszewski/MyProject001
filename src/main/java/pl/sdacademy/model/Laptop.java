@@ -9,4 +9,9 @@ public class Laptop {
 	this.karteczka.setNapis(imie);
     }
 
+  @Override
+  public String toString() {
+    return "Laptop [karteczka=" + karteczka + "]";
+  }
+
 }

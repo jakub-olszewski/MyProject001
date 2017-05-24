@@ -21,4 +21,9 @@ public class Karteczka {
 	this.napis = napis;
     }
 
+  @Override
+  public String toString() {
+    return "Karteczka [napis=" + napis + "]";
+  }
+
 }
