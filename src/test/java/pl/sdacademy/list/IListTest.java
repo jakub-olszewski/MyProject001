@@ -31,9 +31,15 @@ public class IListTest {
 		Laptop laptopMarka = new Laptop("Marka");
 		pustaListaLaptopow.add(laptopMarka);
 
-		Laptop pierwszyElementZListy = pustaListaLaptopow.get(0);
-		if (pierwszyElementZListy.equals(laptopMarka)) {
-			result = true;
+		Laptop pierwszyElementZListy;
+		try {
+			pierwszyElementZListy = pustaListaLaptopow.get(0);
+			if (pierwszyElementZListy.equals(laptopMarka)) {
+				result = true;
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 
 		assertTrue(result);
@@ -59,7 +65,7 @@ public class IListTest {
 
 	@Test
 	public void shouldReturnNullIfThereAreNoElements() {
-		if (pustaListaLaptopow.getFirst().equals(null)) {
+		if (pustaListaLaptopow.isEmpty()) {
 			result = true;
 		}
 		assertTrue(result);
@@ -68,14 +74,25 @@ public class IListTest {
 	@Test
 	public void shouldGetSpecificElementFromTheList() {
 
-		assertTrue(laptopMarka.equals(niePustaListaLaptopow.get(0)));
+		try {
+			result = laptopMarka.equals(niePustaListaLaptopow.get(0));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		assertTrue(result);
 	}
 
 	@Test
 	public void shouldRemoveElementFromNonEmptyList() {
 
-		niePustaListaLaptopow.remove(0);
-		assertTrue(niePustaListaLaptopow.get(0).equals(laptopAdama));
+		niePustaListaLaptopow.remove(1);
+		try {
+			assertTrue(niePustaListaLaptopow.get(1) == null);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@Test

@@ -47,8 +47,16 @@ public class List<T> implements IList<T> {
 	}
 
 	@Override
-	public T get(int index) {
-		return getElement(index).getValue();
+	public T get(int index) throws Exception {
+		if (isEmpty()) {
+			throw new Exception();
+		}
+		ListElement<T> elementPobierany = getElement(index);
+		if (elementPobierany == null) {
+			return null;
+		} else {
+			return elementPobierany.getValue();
+		}
 	}
 
 	public ListElement<T> getElement(int index) {
@@ -70,8 +78,13 @@ public class List<T> implements IList<T> {
 		ListElement<T> elementDoUsuniecia = getElement(index);
 		ListElement<T> elementPrzed = elementDoUsuniecia.getPrevious();
 		ListElement<T> elementPo = elementDoUsuniecia.getNext();
-		elementPrzed.zaczepZTylu = elementPo;
-		elementPo.zaczepZPrzodu = elementPrzed;
+		if (elementPo == null) {
+			ostatniElement = elementPrzed;
+			ostatniElement.zaczepZTylu = null;
+		} else {
+			elementPrzed.zaczepZTylu = elementPo;
+			elementPo.zaczepZPrzodu = elementPrzed;
+		}
 	}
 
 	@Override

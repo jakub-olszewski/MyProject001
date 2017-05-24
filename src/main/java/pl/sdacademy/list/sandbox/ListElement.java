@@ -1,6 +1,7 @@
 package pl.sdacademy.list.sandbox;
 
 public class ListElement<T> {
+
 	public ListElement(T value) {
 		super();
 		this.value = value;

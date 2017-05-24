@@ -15,18 +15,18 @@ package pl.sdacademy.list;
  */
 public interface IList<T> extends Iterable<T> {
 
-    T getFirst();
+	T getFirst();
 
-    T getLast();
+	T getLast();
 
-    T get(int index);
+	T get(int index) throws Exception;
 
-    void add(T element);
+	void add(T element);
 
-    void remove(int index);
+	void remove(int index);
 
-    int size();
+	int size();
 
-    boolean isEmpty();
+	boolean isEmpty();
 
 }
