@@ -1,46 +1,46 @@
 package pl.sdacademy.tree;
 
-public class Node {
+public class Node<T> {
 
-    Node parent;
-    Node left;
-    Node right;
-    int value;
+  Node parent;
+  Node left;
+  Node right;
+  T value;
 
-    public Node(int data) {
-	setValue(data);
-    }
+  public Node(T data) {
+    setValue(data);
+  }
 
-    public Node getParent() {
-	return parent;
-    }
+  public Node getParent() {
+    return parent;
+  }
 
-    public void setParent(Node parent) {
-	this.parent = parent;
-    }
+  public void setParent(Node parent) {
+    this.parent = parent;
+  }
 
-    public Node getLeft() {
-	return left;
-    }
+  public Node getLeft() {
+    return left;
+  }
 
-    public void setLeft(Node left) {
-	this.left = left;
-    }
+  public void setLeft(Node left) {
+    this.left = left;
+  }
 
-    public Node getRight() {
-	return right;
-    }
+  public Node getRight() {
+    return right;
+  }
 
-    public void setRight(Node right) {
-	this.right = right;
-    }
+  public void setRight(Node right) {
+    this.right = right;
+  }
 
-    public int getValue() {
-	return value;
-    }
+  public T getValue() {
+    return value;
+  }
 
-    public void setValue(int value) {
-	this.value = value;
-    }
+  public void setValue(T value) {
+    this.value = value;
+  }
 
 }

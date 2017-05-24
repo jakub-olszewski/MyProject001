@@ -2,22 +2,18 @@ package pl.sdacademy.tree;
 
 public class BinaryTree extends Tree {
 
-    public BinaryTree() {
-	// TODO Auto-generated constructor stub
+  @Override
+  public void insert(int value) {
+    root = add(root, value);
     }
 
-    public void add(int value) {
-	root = add(root, value);
-	System.out.println("");
-	print();
-    }
 
     private Node add(Node node, int value) {
 	if (node == null) {
 	    // zainicjowalismy roota
 	    node = new Node(value);
 	} else {
-	    int nodeValue = node.getValue();
+      int nodeValue = (int) node.getValue();
 	    if (value < nodeValue) {
 		node.setLeft(add(node.getLeft(), value));
 	    } else {

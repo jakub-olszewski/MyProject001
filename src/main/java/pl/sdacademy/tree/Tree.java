@@ -11,8 +11,6 @@ public class Tree {
      */
     public void insert(int value) {
 	root = insert(root, value);
-	System.out.println("");
-	print();
     }
 
     /**
@@ -48,5 +46,13 @@ public class Tree {
 	    print(node.getRight());
 	}
     }
+
+  public Node getRoot() {
+    return root;
+  }
+
+  public void setRoot(Node root) {
+    this.root = root;
+  }
 
 }
