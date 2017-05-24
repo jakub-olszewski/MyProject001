@@ -75,8 +75,16 @@ public class List<T> implements IList<T> {
 	}
 
 	@Override
-	public void add(T element) {
-		// TODO Auto-generated method stub
+	public void add(T wartosc) {
+		ListElement<T> dodawanyElement = new ListElement<T>(wartosc);
+		if (isEmpty()) {
+			pierwszyElement = dodawanyElement;
+			ostatniElement = pierwszyElement;
+		} else {
+			ostatniElement.zaczepZTylu = dodawanyElement;
+			dodawanyElement.zaczepZPrzodu = ostatniElement;
+			ostatniElement = dodawanyElement;
+		}
 
 	}
 
